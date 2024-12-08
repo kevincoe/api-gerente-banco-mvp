@@ -25,14 +25,19 @@ class ClienteController:
     @staticmethod
     def atualizar_cliente(id, data):
         cliente = Cliente.query.get_or_404(id)
-        cliente.nome = data['nome']
-        cliente.agencia = data['agencia']
-        cliente.conta = data['conta']
-        cliente.nivel = data['nivel']
-        cliente.produtos = data.get('produtos', '')
+        if 'nome' in data:
+            cliente.nome = data['nome']
+        if 'agencia' in data:
+            cliente.agencia = data['agencia']
+        if 'conta' in data:
+            cliente.conta = data['conta']
+        if 'nivel' in data:
+            cliente.nivel = data['nivel']
+        if 'produtos' in data:
+            cliente.produtos = data['produtos']
         db.session.commit()
         return cliente
-    
+
     @staticmethod
     def remover_cliente(id):
         cliente = Cliente.query.get_or_404(id)

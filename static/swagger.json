@@ -52,7 +52,7 @@
             }
           }
         },
-        "put": {
+        "patch": {
           "summary": "Atualizar um cliente pelo ID",
           "parameters": [
             {
