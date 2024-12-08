@@ -1,0 +1,119 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Gerente Banco API",
+      "description": "API para gerenciamento de clientes de um banco",
+      "version": "1.0.0"
+    },
+    "basePath": "/api",
+    "paths": {
+      "/clientes": {
+        "get": {
+          "summary": "Listar todos os clientes",
+          "responses": {
+            "200": {
+              "description": "Lista de clientes"
+            }
+          }
+        },
+        "post": {
+          "summary": "Criar um novo cliente",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "cliente",
+              "description": "Dados do cliente",
+              "schema": {
+                "$ref": "#/definitions/Cliente"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Cliente criado"
+            }
+          }
+        }
+      },
+      "/clientes/{id}": {
+        "get": {
+          "summary": "Obter um cliente pelo ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Dados do cliente"
+            }
+          }
+        },
+        "put": {
+          "summary": "Atualizar um cliente pelo ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "in": "body",
+              "name": "cliente",
+              "description": "Dados do cliente",
+              "schema": {
+                "$ref": "#/definitions/Cliente"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Cliente atualizado"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Remover um cliente pelo ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Cliente removido"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Cliente": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "agencia": {
+            "type": "string"
+          },
+          "conta": {
+            "type": "string"
+          },
+          "nivel": {
+            "type": "string"
+          },
+          "produtos": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
