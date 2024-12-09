@@ -68,7 +68,7 @@ api-gerente-banco-mvp/
 1. **Inicie a Aplicação:**
 
    ```bash
-   python3 app.py
+   flask run
    ```
 
 2. **Acesse a Aplicação:**
