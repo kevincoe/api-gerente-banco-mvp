@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
       "title": "API Gerente Banco",
-      "description": "\u2728 API para gerenciamento de clientes de um banco \u2728",
+      "description": "✨ API para gerenciamento de clientes de um banco ✨",
       "version": "1.0.0"
     },
     "basePath": "/api",
@@ -12,7 +12,13 @@
           "summary": "Listar todos os clientes",
           "responses": {
             "200": {
-              "description": "\u2705 Lista de clientes retornada com sucesso."
+              "description": "✅ Lista de clientes retornada com sucesso."
+            },
+            "404": {
+              "description": "❌ Nenhum cliente encontrado."
+            },
+            "500": {
+              "description": "⚠️ Erro interno no servidor."
             }
           }
         },
@@ -22,7 +28,7 @@
             {
               "in": "body",
               "name": "cliente",
-              "description": "\u270f\ufe0f Dados do cliente a ser criado.",
+              "description": "✏️ Dados do cliente a ser criado.",
               "schema": {
                 "$ref": "#/definitions/Cliente"
               }
@@ -30,7 +36,13 @@
           ],
           "responses": {
             "201": {
-              "description": "\u2705 Cliente criado com sucesso."
+              "description": "✅ Cliente criado com sucesso."
+            },
+            "400": {
+              "description": "❌ Dados inválidos fornecidos."
+            },
+            "500": {
+              "description": "⚠️ Erro interno no servidor."
             }
           }
         }
@@ -49,7 +61,13 @@
           ],
           "responses": {
             "200": {
-              "description": "\u2705 Dados do cliente retornados com sucesso."
+              "description": "✅ Dados do cliente retornados com sucesso."
+            },
+            "404": {
+              "description": "❌ Cliente não encontrado."
+            },
+            "500": {
+              "description": "⚠️ Erro interno no servidor."
             }
           }
         },
@@ -66,7 +84,7 @@
             {
               "in": "body",
               "name": "cliente",
-              "description": "\u270f\ufe0f Dados atualizados do cliente.",
+              "description": "✏️ Dados atualizados do cliente.",
               "schema": {
                 "$ref": "#/definitions/Cliente"
               }
@@ -74,7 +92,16 @@
           ],
           "responses": {
             "200": {
-              "description": "\u2705 Cliente atualizado com sucesso."
+              "description": "✅ Cliente atualizado com sucesso."
+            },
+            "400": {
+              "description": "❌ Dados inválidos fornecidos."
+            },
+            "404": {
+              "description": "❌ Cliente não encontrado."
+            },
+            "500": {
+              "description": "⚠️ Erro interno no servidor."
             }
           }
         },
@@ -91,7 +118,13 @@
           ],
           "responses": {
             "204": {
-              "description": "\u2705 Cliente removido com sucesso."
+              "description": "✅ Cliente removido com sucesso."
+            },
+            "404": {
+              "description": "❌ Cliente não encontrado."
+            },
+            "500": {
+              "description": "⚠️ Erro interno no servidor."
             }
           }
         }
@@ -107,7 +140,7 @@
           },
           "agencia": {
             "type": "string",
-            "description": "Ag\u00eancia do cliente."
+            "description": "Agência do cliente."
           },
           "conta": {
             "type": "string",
@@ -115,7 +148,7 @@
           },
           "nivel": {
             "type": "string",
-            "description": "N\u00edvel do cliente (bronze, prata, ouro, diamante)."
+            "description": "Nível do cliente (bronze, prata, ouro, diamante)."
           },
           "produtos": {
             "type": "string",
