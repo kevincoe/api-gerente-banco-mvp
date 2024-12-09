@@ -1,21 +1,21 @@
-# API Gerente Banco MVP
+# 💼 API Gerente Banco MVP
 
 Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clientes de um banco. O sistema permite que os gerentes de banco possam listar, pesquisar, editar e remover clientes, além de visualizar os produtos bancários que cada cliente está utilizando e o nível da conta (bronze, prata, ouro, diamante).
 
 ---
 
-## Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
-- **Python 3**
-- **Flask**
-- **SQLite**
-- **Flask-SQLAlchemy**
-- **Flask-Marshmallow**
-- **Swagger UI**
+- **Python 3** 🐍
+- **Flask** 🌐
+- **SQLite** 🗃️
+- **Flask-SQLAlchemy** 📦
+- **Flask-Marshmallow** 🌾
+- **Swagger UI** 📜
 
 ---
 
-## Estrutura do Projeto
+## 🗂️ Estrutura do Projeto
 
 ```plaintext
 gerente-banco-mvp/
@@ -39,7 +39,7 @@ gerente-banco-mvp/
 
 ---
 
-## Configuração do Ambiente
+## ⚙️ Configuração do Ambiente
 
 1. **Clone o repositório:**
 
@@ -63,7 +63,7 @@ gerente-banco-mvp/
 
 ---
 
-## Executando a Aplicação
+## 🚀 Executando a Aplicação
 
 1. **Inicie a Aplicação:**
 
@@ -81,9 +81,9 @@ gerente-banco-mvp/
 
 ---
 
-## Endpoints da API
+## 📡 Endpoints da API
 
-### Clientes
+### 🧑‍💼 Clientes
 
 - **Listar todos os clientes:**
 
@@ -133,7 +133,7 @@ gerente-banco-mvp/
 
 ---
 
-## Estrutura dos Arquivos
+## 📁 Estrutura dos Arquivos
 
 - **`app.py`**  
   Arquivo principal que inicializa a aplicação Flask, configura o banco de dados e registra os blueprints.
