@@ -18,7 +18,7 @@ Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clie
 ## 🗂️ Estrutura do Projeto
 
 ```plaintext
-gerente-banco-mvp/
+api-gerente-banco-mvp/
 ├── app.py
 ├── config.py
 ├── controllers/
