@@ -1,8 +1,8 @@
 {
     "swagger": "2.0",
     "info": {
-      "title": "Gerente Banco API",
-      "description": "API para gerenciamento de clientes de um banco",
+      "title": "API Gerente Banco",
+      "description": "\u2728 API para gerenciamento de clientes de um banco \u2728",
       "version": "1.0.0"
     },
     "basePath": "/api",
@@ -12,7 +12,7 @@
           "summary": "Listar todos os clientes",
           "responses": {
             "200": {
-              "description": "Lista de clientes"
+              "description": "\u2705 Lista de clientes retornada com sucesso."
             }
           }
         },
@@ -22,7 +22,7 @@
             {
               "in": "body",
               "name": "cliente",
-              "description": "Dados do cliente",
+              "description": "\u270f\ufe0f Dados do cliente a ser criado.",
               "schema": {
                 "$ref": "#/definitions/Cliente"
               }
@@ -30,7 +30,7 @@
           ],
           "responses": {
             "201": {
-              "description": "Cliente criado"
+              "description": "\u2705 Cliente criado com sucesso."
             }
           }
         }
@@ -43,12 +43,13 @@
               "name": "id",
               "in": "path",
               "required": true,
-              "type": "integer"
+              "type": "integer",
+              "description": "ID do cliente a ser buscado."
             }
           ],
           "responses": {
             "200": {
-              "description": "Dados do cliente"
+              "description": "\u2705 Dados do cliente retornados com sucesso."
             }
           }
         },
@@ -59,12 +60,13 @@
               "name": "id",
               "in": "path",
               "required": true,
-              "type": "integer"
+              "type": "integer",
+              "description": "ID do cliente a ser atualizado."
             },
             {
               "in": "body",
               "name": "cliente",
-              "description": "Dados do cliente",
+              "description": "\u270f\ufe0f Dados atualizados do cliente.",
               "schema": {
                 "$ref": "#/definitions/Cliente"
               }
@@ -72,7 +74,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Cliente atualizado"
+              "description": "\u2705 Cliente atualizado com sucesso."
             }
           }
         },
@@ -83,12 +85,13 @@
               "name": "id",
               "in": "path",
               "required": true,
-              "type": "integer"
+              "type": "integer",
+              "description": "ID do cliente a ser removido."
             }
           ],
           "responses": {
             "204": {
-              "description": "Cliente removido"
+              "description": "\u2705 Cliente removido com sucesso."
             }
           }
         }
@@ -99,21 +102,28 @@
         "type": "object",
         "properties": {
           "nome": {
-            "type": "string"
+            "type": "string",
+            "description": "Nome do cliente."
           },
           "agencia": {
-            "type": "string"
+            "type": "string",
+            "description": "Ag\u00eancia do cliente."
           },
           "conta": {
-            "type": "string"
+            "type": "string",
+            "description": "Conta do cliente."
           },
           "nivel": {
-            "type": "string"
+            "type": "string",
+            "description": "N\u00edvel do cliente (bronze, prata, ouro, diamante)."
           },
           "produtos": {
-            "type": "string"
+            "type": "string",
+            "description": "Produtos associados ao cliente."
           }
-        }
+        },
+        "required": ["nome", "agencia", "conta"]
       }
     }
   }
+  
