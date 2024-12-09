@@ -25,7 +25,7 @@ gerente-banco-mvp/ ├── app.py ├── config.py ├── controllers/ �
 
 2. Crie e ative o ambiente virtual:
     python3 -m venv venv
-    source venv/bin/activate  # No Windows use `venv\Scripts\activate`
+    source venv/bin/activate
 
 3. Instale as dependências:
     pip3 install -r requirements.txt
@@ -34,13 +34,13 @@ gerente-banco-mvp/ ├── app.py ├── config.py ├── controllers/ �
 ## Executando a Aplicação:
 
 1. Inicie a Aplicação:
-    python3 app.py
+   ```python3 app.py
 
 2. Acesse a Aplicação:
-    Abra o navegador e vá para http://127.0.0.1:5000/api
+    ```Abra o navegador e vá para http://127.0.0.1:5000/api
 
 3. Documentação e Swagger:
-    A documentação da API pode ser acessada e validada em http://127.0.0.1:5000/swagger
+    ```A documentação da API pode ser acessada e validada em http://127.0.0.1:5000/swagger
 
 
 ## Endpoints da API
