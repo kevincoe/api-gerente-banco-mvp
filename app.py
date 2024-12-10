@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from config import Config
 from models.cliente import db
 from schemas.cliente_schema import ma
@@ -6,6 +7,7 @@ from views.cliente_view import cliente_bp
 from flask_swagger_ui import get_swaggerui_blueprint
 
 app = Flask(__name__)
+CORS(app)
 app.config.from_object(Config)
 
 db.init_app(app)
