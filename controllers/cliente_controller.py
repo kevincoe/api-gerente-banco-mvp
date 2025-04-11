@@ -16,6 +16,7 @@ class ClienteController:
             agencia=data['agencia'],
             conta=data['conta'],
             nivel=data['nivel'],
+            saldo=data.get('saldo', 0.0),
             produtos=data.get('produtos', '')
         )
         db.session.add(novo_cliente)
@@ -35,6 +36,8 @@ class ClienteController:
             cliente.nivel = data['nivel']
         if 'produtos' in data:
             cliente.produtos = data['produtos']
+        if 'saldo' in data:
+            cliente.saldo = data['saldo']
         db.session.commit()
         return cliente
 

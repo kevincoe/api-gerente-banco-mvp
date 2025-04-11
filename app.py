@@ -4,6 +4,7 @@ from config import Config
 from models.cliente import db
 from schemas.cliente_schema import ma
 from views.cliente_view import cliente_bp
+from views.investimento_view import investimento_bp
 from flask_swagger_ui import get_swaggerui_blueprint
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ db.init_app(app)
 ma.init_app(app)
 
 app.register_blueprint(cliente_bp, url_prefix='/api')
+app.register_blueprint(investimento_bp, url_prefix='/api')
 
 SWAGGER_URL = '/swagger'
 API_URL = '/static/swagger.json'

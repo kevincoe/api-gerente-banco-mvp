@@ -12,6 +12,7 @@ Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clie
 - **Flask-SQLAlchemy** 📦
 - **Flask-Marshmallow** 🌾
 - **Swagger UI** 📜
+- **YFinance** 📈
 
 ---
 
@@ -22,17 +23,23 @@ api-gerente-banco-mvp/
 ├── app.py
 ├── config.py
 ├── controllers/
-│   └── cliente_controller.py
+│   ├── cliente_controller.py
+│   └── investimento_controller.py
 ├── instance/
 ├── models/
-│   └── cliente.py
+│   ├── cliente.py
+│   └── investimento.py
 ├── schemas/
-│   └── cliente_schema.py
+│   ├── cliente_schema.py
+│   └── investimento_schema.py
+├── services/
+│   └── finance_service.py
 ├── static/
 │   └── swagger.json
 ├── venv/
 ├── views/
-│   └── cliente_view.py
+│   ├── cliente_view.py
+│   └── investimento_view.py
 ├── README.md
 └── requirements.txt
 ```
@@ -108,6 +115,7 @@ api-gerente-banco-mvp/
       "conta": "string",
       "nivel": "string",
       "produtos": "string"
+      "saldo": 0.0
   }
   ```
 
@@ -121,7 +129,8 @@ api-gerente-banco-mvp/
       "agencia": "string",
       "conta": "string",
       "nivel": "string",
-      "produtos": "string"
+      "produtos": "string",
+      "saldo": 0.0
   }
   ```
 
@@ -144,14 +153,26 @@ api-gerente-banco-mvp/
 - **`controllers/cliente_controller.py`**  
   Contém a lógica de negócios para manipulação dos dados dos clientes.
 
+- **`controllers/investimento_controller.py`**
+  Contém a lógica de negócios para operações de investimento.
+
 - **`models/cliente.py`**  
   Define o modelo Cliente usando SQLAlchemy.
+
+- **`models/investimento.py`**  
+  Define o modelo Investimento usando SQLAlchemy.
 
 - **`schemas/cliente_schema.py`**  
   Define o schema ClienteSchema usando Marshmallow para serialização e desserialização dos dados.
 
+- **`schemas/investimento_schema.py`**  
+  Define o schema InvestimentoSchema usando Marshmallow para serialização e desserialização dos dados.
+
 - **`views/cliente_view.py`**  
   Define as rotas da API para manipulação dos dados dos clientes.
+
+- **`views/investimento_view.py`**  
+  Define as rotas da API para as operações de investimentos.
 
 - **`static/swagger.json`**  
   Arquivo de configuração do Swagger para documentação da API.

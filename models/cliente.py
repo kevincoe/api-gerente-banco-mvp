@@ -8,5 +8,6 @@ class Cliente(db.Model):
     nome = db.Column(db.String(100), nullable=False,)
     agencia = db.Column(db.String(10), nullable=False)
     conta = db.Column(db.String(20), nullable=False)
+    saldo = db.Column(db.Float, nullable=False)
     nivel = db.Column(db.String(20), nullable=False)
     produtos = db.Column(db.String(200), nullable=True)
