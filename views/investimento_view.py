@@ -29,6 +29,12 @@ def comprar_acao(cliente_id):
         
     return jsonify(investimento_schema.dump(resultado)), status_code
 
+@investimento_bp.route('/clientes/<int:cliente_id>/investimentos/agregados', methods=['GET'])
+def listar_investimentos_agregados(cliente_id):
+    """Lista todos os investimentos de um cliente, agregando ativos do mesmo tipo e símbolo"""
+    investimentos = InvestimentoController.listar_investimentos_agregados(cliente_id)
+    return jsonify(investimentos)
+
 @investimento_bp.route('/clientes/<int:cliente_id>/investimentos/dolar', methods=['POST'])
 def comprar_dolar(cliente_id):
     """Compra dólares para um cliente"""

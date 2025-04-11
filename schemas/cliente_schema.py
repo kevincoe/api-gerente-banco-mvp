@@ -1,16 +1,18 @@
-from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
+from models.cliente import Cliente
+from marshmallow import fields
 
-db = SQLAlchemy()
+ma = Marshmallow()
 
-class Cliente(db.Model):
-    __tablename__ = 'clientes'
-    id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
-    nome = db.Column(db.String(100), nullable=False,)
-    agencia = db.Column(db.String(10), nullable=False)
-    conta = db.Column(db.String(20), nullable=False)
-    saldo = db.Column(db.Float, nullable=False)
-    nivel = db.Column(db.String(20), nullable=False)
-    produtos = db.Column(db.String(200), nullable=True)
-    
-    # Relacionamento com investimentos
-    investimentos = db.relationship('Investimento', backref='cliente', lazy=True, cascade="all, delete-orphan")
+class ClienteSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Cliente
+        include_fk = True
+        
+    id = ma.Integer(dump_only=True)
+    nome = ma.String(required=True)
+    agencia = ma.String(required=True)
+    conta = ma.String(required=True)
+    saldo = fields.Decimal(places=2, as_string=True, required=True)
+    nivel = ma.String(required=True)
+    produtos = ma.String(required=False)
