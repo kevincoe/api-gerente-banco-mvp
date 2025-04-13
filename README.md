@@ -4,6 +4,28 @@ Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clie
 
 ---
 
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+
+Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clientes de banco e seus investimentos. O sistema permite que os gerentes de banco possam listar, pesquisar, editar e remover clientes, visualizar produtos bancários e níveis de conta (bronze, prata, ouro, diamante), além de gerenciar investimentos em ações e moedas estrangeiras (dólar).
+
+---
+
+## 🌟 Funcionalidades
+
+- **Gerenciamento de Clientes** - CRUD completo
+- **Níveis de Conta** - Bronze, Prata, Ouro, Diamante
+- **Investimentos**:
+  - Compra de ações da B3 (automaticamente adiciona sufixo .SA)
+  - Compra de dólares com cotação atualizada
+  - Visualização agregada de portfólio
+  - Cálculo automático do valor atual da carteira
+- **API Documentada** - Swagger UI integrado
+
+---
+
 ## 🛠️ Tecnologias Utilizadas
 
 - **Python 3** 🐍
@@ -175,6 +197,7 @@ Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clie
       "quantidade": 100
   }
   ```
+---
 
 ## Modelos de Dados📊
 
