@@ -84,7 +84,6 @@ Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clie
    ```
 
 3. **Construa e inicie os contêineres:**
-
   **Para iniciar os contêineres**
    ```bash
    docker-compose up --build -d
@@ -196,7 +195,7 @@ Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clie
   ```
 ---
 
-## Modelos de Dados📊
+## Modelos de Dados📊🗃️
 
 ### Cliente
 
