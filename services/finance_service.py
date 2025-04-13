@@ -1,6 +1,7 @@
 import yfinance as yf
 from datetime import datetime
 import logging
+from decimal import Decimal
 
 logging.basicConfig(level=logging.INFO)
 
@@ -42,14 +43,22 @@ class FinanceService:
         """Calcula o valor atual da carteira de investimentos"""
         valor_total = 0.0
         for investimento in investimentos:
-            if investimento.tipo == "acao":
-                preco_atual = FinanceService.get_stock_price(investimento.simbolo)
-            elif investimento.tipo == "moeda":
-                preco_atual = FinanceService.get_currency_price()
-            else:
-                preco_atual = None
-                
-            if preco_atual:
-                valor_total += preco_atual * investimento.quantidade
+            try:
+                if investimento.tipo == "acao":
+                    preco_atual = FinanceService.get_stock_price(investimento.simbolo)
+                elif investimento.tipo == "moeda":
+                    preco_atual = FinanceService.get_currency_price()
+                else:
+                    preco_atual = None
+                    
+                if preco_atual:
+                    # Converter ambos os valores para o mesmo tipo (float)
+                    quantidade_float = float(investimento.quantidade)
+                    preco_float = float(preco_atual)
+                    
+                    valor_total += preco_float * quantidade_float
+                    
+            except Exception as e:
+                logging.error(f"Erro ao calcular valor para {investimento.simbolo}: {str(e)}")
                 
         return valor_total

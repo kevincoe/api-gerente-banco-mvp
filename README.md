@@ -1,6 +1,6 @@
 # 💼 API Gerente Banco MVP
 
-Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clientes de um banco. O sistema permite que os gerentes de banco possam listar, pesquisar, editar e remover clientes, além de visualizar os produtos bancários que cada cliente está utilizando e o nível da conta (bronze, prata, ouro, diamante).
+Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clientes de um banco. O sistema permite que os gerentes de banco possam listar, pesquisar, editar e remover clientes, além de visualizar os produtos bancários que cada cliente está utilizando e o nível da conta (bronze, prata, ouro, diamante). Também será possível acessar o sistema de Concierge, para administrar os investimentos do clientes, compra de ações na bolsa de valores e compra de dólar.
 
 ---
 
@@ -13,31 +13,33 @@ Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clie
 - **Flask-Marshmallow** 🌾
 - **Swagger UI** 📜
 - **YFinance** 📈
+- **Docker** 🐋
 
 ---
 
 ## 🗂️ Estrutura do Projeto
 
 ```plaintext
-api-gerente-banco-mvp/
-├── app.py
-├── config.py
-├── controllers/
+├── app.py                  # Aplicação principal Flask
+├── config.py               # Configurações do projeto
+├── Dockerfile              # Instruções para construção da imagem Docker
+├── docker-compose.yml      # Configuração do ambiente Docker
+├── .dockerignore           # Arquivos ignorados pelo Docker
+├── controllers/            # Lógica de negócios
 │   ├── cliente_controller.py
 │   └── investimento_controller.py
-├── instance/
-├── models/
+├── instance/               # Banco de dados SQLite
+├── models/                 # Modelos de dados
 │   ├── cliente.py
 │   └── investimento.py
-├── schemas/
+├── schemas/                # Schemas para serialização/deserialização
 │   ├── cliente_schema.py
 │   └── investimento_schema.py
-├── services/
-│   └── finance_service.py
+├── services/               # Serviços externos
+│   └── finance_service.py  # Integração com Yahoo Finance
 ├── static/
-│   └── swagger.json
-├── venv/
-├── views/
+│   └── swagger.json        # Especificação da API
+├── views/                  # Rotas da API
 │   ├── cliente_view.py
 │   └── investimento_view.py
 ├── README.md
@@ -62,29 +64,27 @@ api-gerente-banco-mvp/
    source venv/bin/activate
    ```
 
-3. **Instale as dependências:**
+3. **Construa e inicie os contêineres:**
 
+  **Para iniciar os contêineres**
    ```bash
-   pip3 install -r requirements.txt
+   docker-compose up --build -d
+   ```
+   **Para encerrar os contêineres**
+   ```bash
+   docker-compose down
    ```
 
 ---
 
-## 🚀 Executando a Aplicação
+## 🚀 Acessando a Aplicação
 
-1. **Inicie a Aplicação:**
+1. **Em seu navegador:**
 
    ```bash
-   flask run
+   API: http://localhost:5000/api
+   Documentação Swagger: http://localhost:5000/swagger
    ```
-
-2. **Acesse a Aplicação:**
-
-   Abra o navegador e vá para: [http://127.0.0.1:5000/api](http://127.0.0.1:5000/api)
-
-3. **Documentação e Swagger:**
-
-   A documentação da API pode ser acessada em: [http://127.0.0.1:5000/swagger](http://127.0.0.1:5000/swagger)
 
 ---
 
@@ -139,6 +139,68 @@ api-gerente-banco-mvp/
   ```http
   DELETE /api/clientes/{id}
   ```
+
+### Investimentos 📈💰
+
+- **Listar Investimentos de um cliente:**
+  ```http
+  GET /api/clientes/{cliente_id}/investimentos
+  ```
+
+- **Listar Investimentos agregados:**
+  ```http
+  GET /api/clientes/{cliente_id}/investimentos/agregados
+  ```
+
+**Obter valor atual da carteira:**
+  ```http
+  GET /api/clientes/{cliente_id}/investimentos/carteira
+  ```
+
+**Comprar ações:**
+  ```http
+  POST /api/clientes/{cliente_id}/investimentos/acoes
+  Body:
+  {
+      "simbolo": "PETR4",
+      "quantidade": 10
+  }
+  ```
+
+**Comprar dólares:**
+  ```http
+  POST /api/clientes/{cliente_id}/investimentos/dolar
+  Body:
+  {
+      "quantidade": 100
+  }
+  ```
+
+## Modelos de Dados📊
+
+### Cliente
+
+| Campo     | Tipo         | Descrição                                         |
+|-----------|--------------|---------------------------------------------------|
+| id        | Integer      | Identificador único                               |
+| nome      | String(100)  | Nome do cliente                                   |
+| agencia   | String(10)   | Número da agência                                 |
+| conta     | String(20)   | Número da conta                                   |
+| saldo     | Numeric(10,2)| Saldo em reais                                    |
+| nivel     | String(20)   | Nível (Bronze, Prata, Ouro, Diamante)             |
+| produtos  | String(200)  | Produtos contratados (separados por vírgula)      |
+
+### Investimento
+
+| Campo        | Tipo         | Descrição                                  |
+|--------------|--------------|--------------------------------------------|
+| id           | Integer      | Identificador único                        |
+| cliente_id   | Integer      | ID do cliente (chave estrangeira)          |
+| tipo         | String(20)   | Tipo: "acao" ou "moeda"                    |
+| simbolo      | String(20)   | Código da ação ou moeda (ex: PETR4)        |
+| quantidade   | Float        | Quantidade de ações/moedas                 |
+| preco_compra | Float        | Preço unitário na compra                   |
+| data_compra  | DateTime     | Data e hora da compra                      |
 
 ---
 
