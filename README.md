@@ -1,7 +1,4 @@
 # 💼 API Gerente Banco MVP
-
-Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clientes de um banco. O sistema permite que os gerentes de banco possam listar, pesquisar, editar e remover clientes, além de visualizar os produtos bancários que cada cliente está utilizando e o nível da conta (bronze, prata, ouro, diamante). Também será possível acessar o sistema de Concierge, para administrar os investimentos do clientes, compra de ações na bolsa de valores e compra de dólar.
-
 ---
 
 ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
