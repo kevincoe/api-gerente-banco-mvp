@@ -152,12 +152,12 @@ Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clie
   GET /api/clientes/{cliente_id}/investimentos/agregados
   ```
 
-**Obter valor atual da carteira:**
+- **Obter valor atual da carteira:**
   ```http
   GET /api/clientes/{cliente_id}/investimentos/carteira
   ```
 
-**Comprar ações:**
+- **Comprar ações:**
   ```http
   POST /api/clientes/{cliente_id}/investimentos/acoes
   Body:
@@ -167,7 +167,7 @@ Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clie
   }
   ```
 
-**Comprar dólares:**
+- **Comprar dólares:**
   ```http
   POST /api/clientes/{cliente_id}/investimentos/dolar
   Body:
@@ -203,41 +203,3 @@ Este é um MVP (Minimum Viable Product) para um sistema de gerenciamento de clie
 | data_compra  | DateTime     | Data e hora da compra                      |
 
 ---
-
-## 📁 Estrutura dos Arquivos
-
-- **`app.py`**  
-  Arquivo principal que inicializa a aplicação Flask, configura o banco de dados e registra os blueprints.
-
-- **`config.py`**  
-  Arquivo de configuração contendo as configurações do banco de dados.
-
-- **`controllers/cliente_controller.py`**  
-  Contém a lógica de negócios para manipulação dos dados dos clientes.
-
-- **`controllers/investimento_controller.py`**
-  Contém a lógica de negócios para operações de investimento.
-
-- **`models/cliente.py`**  
-  Define o modelo Cliente usando SQLAlchemy.
-
-- **`models/investimento.py`**  
-  Define o modelo Investimento usando SQLAlchemy.
-
-- **`schemas/cliente_schema.py`**  
-  Define o schema ClienteSchema usando Marshmallow para serialização e desserialização dos dados.
-
-- **`schemas/investimento_schema.py`**  
-  Define o schema InvestimentoSchema usando Marshmallow para serialização e desserialização dos dados.
-
-- **`views/cliente_view.py`**  
-  Define as rotas da API para manipulação dos dados dos clientes.
-
-- **`views/investimento_view.py`**  
-  Define as rotas da API para as operações de investimentos.
-
-- **`static/swagger.json`**  
-  Arquivo de configuração do Swagger para documentação da API.
-
-- **`requirements.txt`**  
-  Lista de dependências do projeto.
